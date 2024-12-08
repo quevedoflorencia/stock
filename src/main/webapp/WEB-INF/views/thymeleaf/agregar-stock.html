@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Menú Consultas</title>
+
+  <!-- Boostrap core css -->
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}"/>
+
+  <!-- custom style -->
+  <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">UNLAM</a>
+</nav>
+
+<main role="main" class="container">
+
+  <div class = "container">
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+      <form th:action="@{/incrementar-stock}" method="GET" >
+
+        <label for="producto">Seleccionar producto:</label>
+        <select id="producto" name="productoId" required>
+          <option value="" disabled selected>Elige un producto</option>
+          <option th:each="producto: ${productos}" th:value="${producto.id}" th:text="${producto.descripcion}"></option>
+        </select>
+        <br><br>
+
+        <!-- Campo para ingresar la cantidad a incrementar -->
+        <label for="cantidad">Cantidad a incrementar:</label>
+        <input type="number" id="cantidad" name="cantidad" min="1" required>
+
+        <br><br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Incrementar</button>
+
+        <a id="ir-a-registrarme" href="menu-consultas.html">Volver a menú consultas</a>
+
+        <p th:if="${mensaje != null}" class="alert alert-danger" th:text="'Mensaje ' + ${mensaje}">
+        </p>
+      </form>
+
+    </div>
+    <h2>Listado de Productos en Stock:</h2>
+    <div class="contairer pt-2">
+
+      <ul>
+        <li th:each ="producto : ${ProductosStockMayorACero}">
+          <span th:text="${producto.descripcion}"></span>
+          <span th:text="${producto.stock}"></span>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+</main>
+<!-- /.container -->
+
+<!-- Boostrap core js -->
+<script type="text/javascript" th:src="@{webjars/bootstrap/5.2.0/js/bootstrap.min.js}"></script>
+</body>
+</html>

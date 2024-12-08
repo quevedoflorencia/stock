@@ -1,6 +1,7 @@
 package com.tallerwebi.dominio;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ServicioProducto {
     List <Producto> buscarStockMayorA(Integer stock);
@@ -13,4 +14,10 @@ public interface ServicioProducto {
     void eliminarStock(Producto productoEncontrado);
 
     void incrementarStock(Producto productoEncontrado);
+
+    List<Producto> obtenerTodosLosProductos();
+
+    Producto buscarProductoPorId(Long ProductoId);
+
+    void actualizarProducto(Producto productoEncontrado, int cantidad);
 }

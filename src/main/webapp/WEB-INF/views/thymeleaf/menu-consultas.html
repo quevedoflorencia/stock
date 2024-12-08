@@ -24,7 +24,7 @@
 
   <div class = "container">
     <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-      <form th:action="@{/menu-consultas}" method="GET" >
+      <form th:action="@{/procesar-consulta}" method="GET" >
 
           <label for="tipoConsulta">Selecciona la consulta:</label>
           <select id="tipoConsulta" name="tipoConsulta" required>
@@ -45,9 +45,9 @@
       <div class="contairer pt-2">
 
           <ul>
-              <li th:each ="listado : ${listado} ">
-                  <span th:text="${listado.descripcion}"></span>
-                  <span th:text="${listado.stock}"></span>
+              <li th:each ="producto : ${ProductosStockMayorACero}">
+                  <span th:text="${producto.descripcion}"></span>
+                  <span th:text="${producto.stock}"></span>
               </li>
           </ul>
 

@@ -11,4 +11,11 @@ public interface RepositorioProducto {
     Producto buscarProducto(String productoAEliminar);
 
     void eliminarStock(Producto productoEncontrado);
+
+    List<Producto> obtenerTodosLosProductos();
+
+    Producto buscarProductoPorId(Long productoId);
+
+    void modificar(Producto producto);
+
 }

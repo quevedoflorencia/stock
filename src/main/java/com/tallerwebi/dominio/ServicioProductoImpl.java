@@ -51,4 +51,19 @@ public class ServicioProductoImpl implements ServicioProducto{
     public void incrementarStock(Producto productoEncontrado) {
 
     }
+
+    @Override
+    public List<Producto> obtenerTodosLosProductos() {
+        return repositorioProducto.obtenerTodosLosProductos();
+    }
+
+
+    public Producto buscarProductoPorId(Long productoId){
+        return repositorioProducto.buscarProductoPorId(productoId);
+    }
+
+    public void actualizarProducto (Producto producto, int cantidad){
+        producto.setStock(producto.getStock()+cantidad);
+        repositorioProducto.modificar(producto);
+    }
 }
