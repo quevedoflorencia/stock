@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Consulta Stock</title>
+
+  <!-- Boostrap core css -->
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}"/>
+
+  <!-- custom style -->
+  <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">UNLAM</a>
+</nav>
+
+<main role="main" class="container">
+
+  <div class = "container">
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+      <form th:action="@{/consulta-stock}" method="GET" >
+     <!-- <form action="#" th:action="@{/consulta-stock}" method="POST" th:object="${producto}"> ESTE MÉTODO SE RELACIONA CON @RequestMapping(path = "/consulta-stock", method = RequestMethod.POST)-->
+        <h3 class="form-signin-heading">Consultar productos por stock</h3>
+        <br><br>
+        <hr class="colorgraph"><br>
+        <label for="stock">Stock mayor a:</label>
+     <!--<input th:field="*{stock}" type="number" id="stock" class="form-control" required/>-->
+          <input type="number" id="stock" name="stock" class="form-control" required/>
+        <br>
+
+        <button id="btn-registrarme" class="btn btn-lg btn-primary btn-block" Type="Submit">Consultar</button>
+          <a th:href="@{'/menu-consultas'}" class="btn btn-light btn-outline-dark">Ir a Menú Consultas</a>
+
+        <p th:if="${error != null}" class="alert alert-danger" th:text="'Error ' + ${error}">
+        </p>
+      </form>
+
+    </div>
+
+    <h2>Listado de Productos mayor a: <span th:text="${valor}"></span></h2>
+    <div class="contairer pt-2">
+
+      <ul>
+        <li th:each ="resultado : ${resultado} ">
+          <span th:text="${resultado.descripcion}"></span>
+          <span th:text="${resultado.stock}"></span>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</main>
+<!-- /.container -->
+
+<!-- Boostrap core js -->
+<script type="text/javascript" th:src="@{webjars/bootstrap/5.2.0/js/bootstrap.min.js}"></script>
+</body>
+</html>
