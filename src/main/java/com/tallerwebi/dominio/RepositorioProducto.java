@@ -18,4 +18,5 @@ public interface RepositorioProducto {
 
     void modificar(Producto producto);
 
+    void agregarProducto(Producto producto);
 }

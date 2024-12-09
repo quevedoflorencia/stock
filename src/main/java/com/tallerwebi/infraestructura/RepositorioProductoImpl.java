@@ -90,4 +90,9 @@ public class RepositorioProductoImpl implements RepositorioProducto {
         sessionFactory.getCurrentSession().update(producto);
     }
 
+    @Override
+    public void agregarProducto(Producto producto) {
+        sessionFactory.getCurrentSession().save(producto);
+    }
+
 }

@@ -45,7 +45,15 @@ public class ControladorProducto {
       return new ModelAndView("formulario-consulta", model);
     }
 */
+    @RequestMapping(path = "/nuevo-producto", method = RequestMethod.POST)
+    public ModelAndView incrementarStock(@ModelAttribute("producto") Producto producto) {
+        ModelMap model = new ModelMap();
 
+
+       servicioProducto.ingresarProducto(producto);
+
+        return new ModelAndView("menu-consultas", model);
+    }
     @GetMapping("/consulta-stock")
     public ModelAndView consultarStock(Integer stock) {
         ModelMap model = new ModelMap();
@@ -154,6 +162,10 @@ public class ControladorProducto {
             case "3":
                 modelo.put("productos", servicioProducto.obtenerTodosLosProductos());
                 return new ModelAndView("eliminar-producto", modelo);
+
+            case "4":
+                modelo.put("producto", new Producto());
+                return new ModelAndView("nuevo-producto", modelo);
 
             default:
             modelo.put("error", "Opción no válida. Por favor selecciona una opción correcta.");

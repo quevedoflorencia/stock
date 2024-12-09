@@ -20,4 +20,6 @@ public interface ServicioProducto {
     Producto buscarProductoPorId(Long ProductoId);
 
     void actualizarProducto(Producto productoEncontrado, int cantidad);
+
+    void ingresarProducto(Producto producto);
 }

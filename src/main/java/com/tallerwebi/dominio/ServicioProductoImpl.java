@@ -66,4 +66,9 @@ public class ServicioProductoImpl implements ServicioProducto{
         producto.setStock(producto.getStock()+cantidad);
         repositorioProducto.modificar(producto);
     }
+
+    @Override
+    public void ingresarProducto(Producto producto) {
+        repositorioProducto.agregarProducto(producto);
+    }
 }

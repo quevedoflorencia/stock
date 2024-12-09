@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Menú Consultas</title>
+  <title>Nuevo Producto</title>
 
   <!-- Boostrap core css -->
   <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.0/css/bootstrap.min.css}"/>
@@ -24,24 +24,23 @@
 
   <div class = "container">
     <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-      <form th:action="@{/incrementar-stock}" method="GET" >
+      <form th:action="@{/nuevo-producto}" method="POST" th:object="${producto}" >
 
-        <label for="producto">Seleccionar producto:</label>
-        <select id="producto" name="productoId" required>
-          <option value="" disabled selected>Elige un producto</option>
-          <option th:each="producto: ${productos}" th:value="${producto.id}" th:text="${producto.descripcion}"></option>
-        </select>
+        <label for="descripcion">Ingrese la descripción del nuevo producto: </label>
+        <input th:field="*{descripcion}" id="descripcion" class="form-control" required/>
+
+        <label for="stock">Ingrese la cantidad: </label>
+        <input th:field="*{stock}" id="stock" class="form-control" required/>
         <br><br>
 
         <!-- Campo para ingresar la cantidad a incrementar -->
-        <label for="cantidad">Cantidad a incrementar:</label>
-        <input type="number" id="cantidad" name="cantidad" min="1" required>
+
 
         <br><br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Incrementar</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
         <a th:href="@{'/menu-consultas'}" class="btn btn-light btn-outline-dark">Ir a Menú Consultas</a>
 
-        <p th:if="${mensaje != null}" class="alert alert-success" th:text="'Mensaje ' + ${mensaje}">
+        <p th:if="${mensaje != null}" class="alert alert-danger" th:text="'Mensaje ' + ${mensaje}">
         </p>
       </form>
 
