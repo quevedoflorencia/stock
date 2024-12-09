@@ -122,17 +122,23 @@ public class ControladorProducto {
     }
 
 
-
+/*
     @RequestMapping(path = "/nuevo-producto", method = RequestMethod.POST)
-    public ModelAndView incrementarStock(@ModelAttribute("producto") Producto producto) {
+    public ModelAndView ingresarNuevoProducto(@ModelAttribute("producto") Producto producto) {
         ModelMap model = new ModelMap();
-
 
        servicioProducto.ingresarProducto(producto);
 
         return new ModelAndView("menu-consultas", model);
+    }*/
+
+    @RequestMapping(path = "/nuevo-producto", method = RequestMethod.POST)
+    public ModelAndView ingresarNuevoProducto(@ModelAttribute("producto") Producto producto) {
+        ModelMap model = new ModelMap();
+
+        servicioProducto.ingresarProducto(producto);
+        model.put("exito", "Ingresó el producto correctamente");
+        return new ModelAndView("nuevo-producto", model);
     }
-
-
 }
 

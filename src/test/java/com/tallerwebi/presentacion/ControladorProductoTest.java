@@ -99,6 +99,21 @@ public class ControladorProductoTest {
 		
 	}
 
+	@Test
+	public void queAlIngresarUnNuevoProductoLoAgregueALaListaDeProductos(){
+		//Preparación
+		Producto productoNuevo = new Producto();
+
+		//Ejecución
+		ModelAndView modelAndView =controladorProducto.ingresarNuevoProducto(productoNuevo);
+
+		//Verificación
+		assertThat(modelAndView.getViewName(), equalToIgnoringCase("nuevo-producto"));
+		assertThat(modelAndView.getModel().get("exito").toString(), equalToIgnoringCase("Ingresó el producto correctamente"));
+
+
+	}
+
 	/*@Test
 	public void registrameSiUsuarioNoExisteDeberiaCrearUsuarioYVolverAlLogin() throws UsuarioExistente {
 
