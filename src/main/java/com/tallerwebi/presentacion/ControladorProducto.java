@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -140,5 +141,10 @@ public class ControladorProducto {
         model.put("exito", "Ingresó el producto correctamente");
         return new ModelAndView("nuevo-producto", model);
     }
+
+
+
+
+
 }
 

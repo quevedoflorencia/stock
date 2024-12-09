@@ -19,8 +19,7 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class ControladorProductoTest {
@@ -103,15 +102,20 @@ public class ControladorProductoTest {
 	public void queAlIngresarUnNuevoProductoLoAgregueALaListaDeProductos(){
 		//Preparación
 		Producto productoNuevo = new Producto();
+		Producto productoNuevoDos = new Producto();
+		Producto productoNuevoTres = new Producto();
 
 		//Ejecución
-		ModelAndView modelAndView =controladorProducto.ingresarNuevoProducto(productoNuevo);
+
+		controladorProducto.ingresarNuevoProducto(productoNuevo);
+		controladorProducto.ingresarNuevoProducto(productoNuevoDos);
+		controladorProducto.ingresarNuevoProducto(productoNuevoTres);
+
 
 		//Verificación
-		assertThat(modelAndView.getViewName(), equalToIgnoringCase("nuevo-producto"));
-		assertThat(modelAndView.getModel().get("exito").toString(), equalToIgnoringCase("Ingresó el producto correctamente"));
-
-
+		//assertThat(modelAndView.getViewName(), equalToIgnoringCase("nuevo-producto"));
+		//assertThat(modelAndView.getModel().get("exito").toString(), equalToIgnoringCase("Ingresó el producto correctamente"));
+		verify(servicioProductoMock, times(3)).ingresarProducto(any(Producto.class)); // Se verifica que el servicio se llamó tres veces
 	}
 
 	/*@Test
