@@ -54,6 +54,7 @@ public class ServicioProductoImpl implements ServicioProducto{
 
     @Override
     public List<Producto> obtenerTodosLosProductos() {
+
         return repositorioProducto.obtenerTodosLosProductos();
     }
 
